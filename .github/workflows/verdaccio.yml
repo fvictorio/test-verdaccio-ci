@@ -25,6 +25,7 @@ jobs:
         echo '    publish: $all' >> verdaccio.yml
         echo '    unpublish: $all' >> verdaccio.yml
         echo '    proxy: npmjs' >> verdaccio.yml
+        echo '//localhost:4873/:_authToken="tFLPfP7k4DiiOvZ9K/rnTw=="' > .npmrc
     - name: Test
       run: cat verdaccio.yml
     - name: Start verdaccio
