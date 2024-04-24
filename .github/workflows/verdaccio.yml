@@ -16,17 +16,15 @@ jobs:
     - name: Install verdaccio
       run: npm install -g verdaccio
     - name: Prepare verdaccio config
-      run:
+      run: |
         mkdir storage
-        cat <<EOF > verdaccio.yml
-storage: ./storage
-packages:
-  '**':
-    access: $all
-    publish: $all
-    unpublish: $all
-    proxy: npmjs
-EOF
+        echo "storage: ./storage" > verdaccio.yml
+        echo "packages:" >> verdaccio.yml
+        echo "  '**':" >> verdaccio.yml
+        echo "    access: $all" >> verdaccio.yml
+        echo "    publish: $all" >> verdaccio.yml
+        echo "    unpublish: $all" >> verdaccio.yml
+        echo "    proxy: npmjs" >> verdaccio.yml
     - name: Start verdaccio
       run: verdaccio --config verdaccio.yml &
     - name: Publish package in verdaccio
