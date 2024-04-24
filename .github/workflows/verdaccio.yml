@@ -25,6 +25,8 @@ jobs:
         echo '    publish: $all' >> verdaccio.yml
         echo '    unpublish: $all' >> verdaccio.yml
         echo '    proxy: npmjs' >> verdaccio.yml
+    - name: Test
+      run: cat verdaccio.yml
     - name: Start verdaccio
       run: verdaccio --config verdaccio.yml &
     - name: Publish package in verdaccio
