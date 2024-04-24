@@ -8,11 +8,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    # node
     - name: Use Node.js 20.x
       uses: actions/setup-node@v1
       with:
         node-version: 20.x
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        version: 8
     - name: Install verdaccio
       run: npm install -g verdaccio@5
     - name: Prepare verdaccio config
