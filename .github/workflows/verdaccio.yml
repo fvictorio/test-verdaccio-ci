@@ -21,10 +21,10 @@ jobs:
         echo "storage: ./storage" > verdaccio.yml
         echo "packages:" >> verdaccio.yml
         echo "  '**':" >> verdaccio.yml
-        echo "    access: $all" >> verdaccio.yml
-        echo "    publish: $all" >> verdaccio.yml
-        echo "    unpublish: $all" >> verdaccio.yml
-        echo "    proxy: npmjs" >> verdaccio.yml
+        echo '    access: $all' >> verdaccio.yml
+        echo '    publish: $all' >> verdaccio.yml
+        echo '    unpublish: $all' >> verdaccio.yml
+        echo '    proxy: npmjs' >> verdaccio.yml
     - name: Start verdaccio
       run: verdaccio --config verdaccio.yml &
     - name: Publish package in verdaccio
