@@ -15,7 +15,19 @@ jobs:
         node-version: 20.x
     - name: Install verdaccio
       run: npm install -g verdaccio
+    - name: Prepare verdaccio config
+      run:
+        mkdir storage
+        cat <<EOF > verdaccio.yml
+storage: ./storage
+packages:
+  '**':
+    access: $all
+    publish: $all
+    unpublish: $all
+    proxy: npmjs
+EOF
     - name: Start verdaccio
-      run: verdaccio&
+      run: verdaccio --config verdaccio.yml &
     - name: Publish package in verdaccio
       run: npm publish --registry http://localhost:4873
