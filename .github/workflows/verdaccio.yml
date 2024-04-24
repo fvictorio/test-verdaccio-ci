@@ -32,3 +32,10 @@ jobs:
       run: verdaccio --config verdaccio.yml &
     - name: Publish package in verdaccio
       run: npm publish --registry http://localhost:4873
+    - name: Clone hardhat
+      uses: actions/checkout@master
+      with:
+        name: NomicFoundation/hardhat
+        ref: refs/heads/main
+    - name: Test
+      run: ls
