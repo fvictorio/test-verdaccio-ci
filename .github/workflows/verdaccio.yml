@@ -35,11 +35,11 @@ jobs:
     - name: Clone hardhat
       uses: actions/checkout@master
       with:
-        name: NomicFoundation/hardhat
+        repository: NomicFoundation/hardhat
         ref: refs/heads/main
-        path: ./hardhat
+        path: hardhat
     - name: cd into hardhat
-      run: cd hardhat/packages/hardhat-core
+      run: cd $GITHUB_WORKSPACE/hardhat/packages/hardhat-core
     - name: Install project
       run: pnpm install --registry http://localhost:4873 test-verdaccio-ci
 
